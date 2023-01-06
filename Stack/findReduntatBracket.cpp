@@ -8,10 +8,10 @@ bool ReduntantBracket(string &s){
             st.push(ch);
         }
         else{
-            // for closing bracket
+            // for closing bracket or lowercase
             if(ch==')'){
                 bool isReduntant  = true;
-                while(st.top()=='('){
+                while(st.top()!='('){
                     char top = st.top();
                     if(top == '+' || top=='-' || top == '*' || top=='/'){
                         isReduntant = false;
@@ -29,7 +29,7 @@ bool ReduntantBracket(string &s){
 }
 int main()
 {   
-    string s = "(a+c*b)+(c))";
+    string s = "(a+b)";
     cout<<ReduntantBracket(s)<<endl;
     return 0;
 }
