@@ -35,16 +35,16 @@ pair<bool, int> isSum(Node *root)
         pair<bool, int> p = make_pair(true, 0);
         return p;
     }
-    if (root->left == NULL && root->right == NULL)
+    if (root->left == NULL && root->right == NULL) // leaf Node Condition
     {
         pair<bool, int> p = make_pair(true, root->data);
         return p;
     }
-    pair<bool, int> left = isSum(root->left);
-    pair<bool, int> right = isSum(root->right);
+    pair<bool, int> left = isSum(root->left); // left SubTree answer 
+    pair<bool, int> right = isSum(root->right); // Right SubTree Answer
     bool currData = (left.second + right.second) == root->data;
     pair<bool, int> ans;
-    ans = make_pair((left.first && right.first && currData), 2 * root->data);
+    ans = make_pair((left.first && right.first && currData), 2 * root->data); // returning pair consists of boolean value and sum of subtree
     return ans;
 }
 bool isSumTree(Node *root)
