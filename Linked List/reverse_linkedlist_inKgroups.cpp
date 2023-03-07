@@ -10,9 +10,9 @@ struct Node
         this->next = NULL;
     }
 };
-int getLen(node *head)
+int getLen(Node *head)
 {
-    node *temp = head;
+    Node *temp = head;
     int ans = 0;
     while (temp != NULL)
     {
@@ -47,7 +47,7 @@ Node *reverseInKGroups(Node *head, int k)
         }
         else
         {
-            head->next = reverseKGroup(forward, k);
+            head->next = reverseInKGroups(forward, k);
         }
         return prev;
     }
