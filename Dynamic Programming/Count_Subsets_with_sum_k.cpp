@@ -84,6 +84,34 @@ int findWays(vector<int> &arr, int k)
     return dp[n - 1][k] % mod;
 }
 
+// If the array contain zeroes as well
+// MEMOIZATION
+#define mod 1000000007;
+int solve(int index, int n, vector<int> &arr, int k, vector<vector<int>> &dp)
+{
+    if (index == 0)
+    {
+        if (k == 0 && arr[0] == 0)
+            return 2;
+        if (k == 0 || k == arr[0])
+            return 1;
+        return 0;
+    }
+    if (dp[index][k] != -1)
+        return dp[index][k];
+    int notpick = solve(index - 1, n, arr, k, dp) % mod;
+    int pick = 0;
+    if (k >= arr[index])
+        pick = solve(index - 1, n, arr, k - arr[index], dp) % mod;
+    return dp[index][k] = (pick + notpick) % mod;
+}
+int findWays(vector<int> &arr, int k)
+{
+    // Write your code here.
+    int n = arr.size();
+    vector<vector<int>> dp(n, vector<int>(k + 1, -1));
+    return solve(n - 1, n, arr, k, dp) % mod;
+}
 int main()
 {
 
