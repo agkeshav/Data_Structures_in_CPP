@@ -68,7 +68,7 @@ int lengthOfLIS(vector<int> &arr)
     vector<int> dp(arr.size(), 1), backTrack(arr.size());
     int last = 1;
     int maxi = INT_MIN;
-    for (int i = 1; i < arr.size(); i++)
+    for (int i = 0; i < arr.size(); i++)
     {
         backTrack[i] = i;
         for (int j = 0; j < i; j++)
