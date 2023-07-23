@@ -18,7 +18,7 @@ public:
     }
 public:
     bool isEmpty(){
-        if(front == rear || rear == size){
+        if(front == rear){
             return true;
         }
         else{
