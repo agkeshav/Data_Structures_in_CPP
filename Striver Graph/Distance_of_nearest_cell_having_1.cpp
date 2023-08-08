@@ -24,6 +24,7 @@ vector<vector<int>> nearest(vector<vector<int>> grid)
             {
                 q.push({{i, j}, 0});
                 visited[i][j] = 1;
+                
             }
         }
     }
