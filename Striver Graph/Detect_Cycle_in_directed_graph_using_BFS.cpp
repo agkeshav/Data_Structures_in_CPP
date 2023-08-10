@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+// works for multiple components as well
 bool isCyclic(int V, vector<int> adj[])
 {
     // code here
@@ -14,38 +15,33 @@ bool isCyclic(int V, vector<int> adj[])
             indegree[adjacentNode]++;
         }
     }
+
+    queue<int> q;
     for (int i = 0; i < V; i++)
     {
-        if (!visited[i])
+        if (!visited[i] && indegree[i] == 0)
         {
+            q.push(i);
+            visited[i] = 1;
+        }
+    }
 
-            queue<int> q;
-            for (int i = 0; i < V; i++)
+    while (q.size() > 0)
+    {
+        int node = q.front();
+        q.pop();
+        count++;
+        for (auto adjacentNode : adj[node])
+        {
+            indegree[adjacentNode]--;
+            if (indegree[adjacentNode] == 0 && visited[adjacentNode] == 0)
             {
-                if (!visited[i] && indegree[i] == 0)
-                {
-                    q.push(i);
-                    visited[i] = 1;
-                }
-            }
-
-            while (q.size() > 0)
-            {
-                int node = q.front();
-                q.pop();
-                count++;
-                for (auto adjacentNode : adj[node])
-                {
-                    indegree[adjacentNode]--;
-                    if (indegree[adjacentNode] == 0 && visited[adjacentNode] == 0)
-                    {
-                        q.push(adjacentNode);
-                        visited[adjacentNode] = 1;
-                    }
-                }
+                q.push(adjacentNode);
+                visited[adjacentNode] = 1;
             }
         }
     }
+
     return (count != V);
 }
 int main()
