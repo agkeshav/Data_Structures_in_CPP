@@ -47,7 +47,6 @@ vector<int> eventualSafeNodes(vector<vector<int>> &graph)
     return ans;
 }
 
-
 // USING BFS
 vector<int> eventualSafeNodes(vector<vector<int>> &graph)
 {
