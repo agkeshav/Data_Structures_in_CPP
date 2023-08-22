@@ -2,6 +2,7 @@
 using namespace std;
 class DisjointSet
 {
+public:
     vector<int> rank, parent, size;
 
 public:
@@ -79,9 +80,7 @@ public:
         // code here
         vector<vector<int>> visited(n, vector<int>(m, 0));
         DisjointSet ds(n * m);
-        vector<int> parent(n * m, 0);
-        for (int i = 0; i < n * m; i++)
-            parent[i] = i;
+
         int cnt = 0;
         vector<int> ans;
         int dx[4] = {0, 0, 1, -1};
