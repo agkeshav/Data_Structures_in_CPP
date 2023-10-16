@@ -52,7 +52,7 @@ public:
     {
         int ulPU = findUParent(u);
         int ulPV = findUParent(v);
-        if (ulPU == ulPU)
+        if (ulPU == ulPV)
             return;
 
         if (size[ulPU] < size[ulPV])
